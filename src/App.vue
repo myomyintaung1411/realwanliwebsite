@@ -1,32 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+export default {
+  methods: {
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  created() {
+    if (this.isMobile()) {
+      this.$router.push("/m");
+    } else {
+      this.$router.push("/");
     }
-  }
+  },
+};
+</script>
+<style lang="scss">
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+// /* body {
+// } */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#app {
+  /* height: 100vh; */
+  overflow-x: hidden !important;
+  // /* min-width: 1275px !important; */
+  /* height: 100vh; */
+  // min-width: 1300px !important;
+  // height: 100%;
+  width: 100%;
 }
 </style>
