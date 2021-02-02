@@ -166,9 +166,19 @@ export default {
     position: relative;
     height: 300px;
     width: 100%;
-    background: url(../assets/promotion/banner.jpg) no-repeat;
+    background: url(../assets/promotion/banner.jpg) repeat;
     background-size: 100% 100%;
+    // -webkit-animation: slide 20s linear infinite;
+    // animation: slide 20s linear infinite;
   }
+  // @-webkit-keyframes slide {
+  //   from {
+  //     background-position: 0 0;
+  //   }
+  //   to {
+  //     background-position: -400px 0;
+  //   }
+  // }
 }
 .bg-img {
   // position: relative;

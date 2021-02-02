@@ -359,6 +359,13 @@ export default {
               letter-spacing: 2px;
               cursor: pointer;
             }
+            .pay-btn:hover {
+              background: salmon;
+              color: #fff;
+              border-radius: 5px;
+              box-shadow: 0 0 5px salmon, 0 0 25px salmon, 0 0 50px salmon,
+                0 0 100px salmon;
+            }
           }
         }
       }
@@ -450,6 +457,13 @@ export default {
     padding: 2px 0px;
     font-size: 20px;
   }
+}
+
+.submit-withdraw:hover {
+  background: salmon;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px salmon, 0 0 25px salmon, 0 0 50px salmon, 0 0 100px salmon;
 }
 
 .footer-section {

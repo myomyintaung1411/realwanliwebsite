@@ -209,7 +209,7 @@
           <!-- threediv -->
           <div class="three__div">
             <div class="items">
-              <h1>代理合作</h1>
+              <h1 >代理合作</h1>
               <h3>代理方案</h3>
               <h3>加盟协议</h3>
               <h3>代理注册</h3>
@@ -314,7 +314,7 @@ export default {
       var en = this.$Global.en;
       let data = JSON.stringify({ Id: id });
       let endata = AES.encrypt(data, en);
-      // console.log(endata,"data of endata")
+       console.log(endata,"data of endata")
       //var decryptdata = JSON.parse(AES.decrypt(endata, en));
       // console.log(decryptdata,"data of decryptdata")
       this.axios
@@ -322,7 +322,7 @@ export default {
         .then((res) => {
           var body = res.data;
           var msg = JSON.parse(AES.decrypt(body, en));
-          // console.log(msg, "response msg of created");
+           console.log(msg, "response msg of created");
           if (msg.JsonData.code == 200) {
             //saving first time creted agentid and name to use in register section
             this.$Global.optioner.Agentid = msg.JsonData.Id;
@@ -336,7 +336,7 @@ export default {
     },
   },
   created() {
-    // var url = window.location.href;
+    //var url = window.location.href;
     var url = "http://21020.localhost:8080";
     var s = url;
     //  console.log("ss", s);
@@ -451,6 +451,7 @@ export default {
               letter-spacing: 3px;
               cursor: pointer;
               user-select: none;
+              // background: linear-gradient(0deg, #000, #272727);
             }
           }
         }

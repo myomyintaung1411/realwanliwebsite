@@ -5,6 +5,13 @@
         <div class="login" @click="Gologin()">登录</div>
         <img src="../../assets/mobile/logo.png" alt="" class="logo-img" />
         <div class="login register" @click="GoRegister()">注册</div>
+        <!-- <a href="#" class="register_btn" @click="gotoTestGame()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          试玩
+        </a> -->
       </div>
       <img class="head_line" src="../../assets/mobile/header_line.png" alt="" />
       <!-- nav -->
@@ -14,13 +21,13 @@
             @click="goAssignBlock('block' + 0, 50)"
             :class="{ active: activeTab == 1 }"
           >
-            华纳公司
+            万利国际
           </li>
           <li
             @click="goAssignBlock('block' + 1, 50)"
             :class="{ active: activeTab == 2 }"
           >
-            前往游戏
+            公司实力
           </li>
           <li
             @click="goAssignBlock('block' + 2, 50)"
@@ -32,13 +39,13 @@
             @click="goAssignBlock('block' + 3, 50)"
             :class="{ active: activeTab == 4 }"
           >
-            登录
+            前往游戏
           </li>
           <li
             @click="goAssignBlock('block' + 4, 50)"
             :class="{ active: activeTab == 5 }"
           >
-            注册
+            存取款
           </li>
         </ul>
       </div>
@@ -102,7 +109,7 @@
     </div>
 
     <!-- end carousal -->
-    <div class="card" ref="block1">
+    <div class="card">
       <div class="card_image">
         <div
           class="tab_image_parent"
@@ -149,7 +156,7 @@
               left: 10%;
               top: 50%;
             "
-            >真人视讯</span
+            >电子游戏</span
           >
         </div>
         <div
@@ -173,7 +180,7 @@
               left: 10%;
               top: 50%;
             "
-            >真人视讯</span
+            >捕鱼达人</span
           >
         </div>
         <div
@@ -197,13 +204,13 @@
               left: 10%;
               top: 50%;
             "
-            >真人视讯</span
+            >棋牌游戏</span
           >
         </div>
       </div>
     </div>
     <!-- end card -->
-    <div class="image_div">
+    <div class="image_div" ref="block1">
       <img
         src="../../assets/home/activeimg1.png"
         alt=""
@@ -220,14 +227,14 @@
         v-show="this.activeImg == 2"
       />
       <img
-        src="../../assets/home/activeimg2.png"
+        src="../../assets/home/activeimg3.png"
         alt=""
         width="100%"
         height="100%"
         v-show="this.activeImg == 3"
       />
       <img
-        src="../../assets/home/activeimg2.png"
+        src="../../assets/home/activeimg4.png"
         alt=""
         width="100%"
         height="100%"
@@ -261,10 +268,10 @@
       </div>
     </div> -->
     <!-- qr code section -->
-    <div class="download" ref="block3">
+    <div class="download" ref="block2">
       <span>APP下载</span>
       <p>
-        随时随地，手机投注，安全畅玩, 凯博相伴 <br />
+        随时随地，手机投注，安全畅玩, 万利相伴 <br />
         赶紧扫描下载吧
       </p>
       <div class="qr_code">
@@ -275,7 +282,7 @@
     <hr
       style="margin: 15px; border: none; height: 2px; background-color: #ccc"
     />
-    <div class="scroll__img__div">
+    <div class="scroll__img__div" ref="block3">
       <div
         class="scroll_img"
         v-for="(s, index) in scrollImg"
@@ -379,15 +386,15 @@ export default {
       scrollImg: [
         {
           img: require("../../assets/live/11.png"),
-          text: "炸金花",
+          text: "推筒子",
         },
         {
           img: require("../../assets/live/22.png"),
-          text: "百家乐",
+          text: "大小点",
         },
         {
           img: require("../../assets/live/33.png"),
-          text: "牛牛",
+          text: "百家乐",
         },
         {
           img: require("../../assets/live/44.png"),
@@ -395,11 +402,11 @@ export default {
         },
         {
           img: require("../../assets/live/55.png"),
-          text: "推筒子",
+          text: "牛牛",
         },
         {
           img: require("../../assets/live/66.png"),
-          text: "推筒子",
+          text: "炸金花",
         },
       ],
     };
@@ -451,6 +458,7 @@ export default {
         .then((res) => {
           var body = res.data;
           var msg = JSON.parse(AES.decrypt(body, en));
+          
           if (msg.JsonData.code == 200) {
             this.$Global.optioner.AgentId = msg.JsonData.Id;
             this.$Global.optioner.AgentName = msg.JsonData.name;
@@ -711,6 +719,7 @@ export default {
     .register {
       background: linear-gradient(-135deg, #7f7db1, #2e7dd8);
     }
+
     .logo-img {
       margin: 5px 0;
       // background: red;
@@ -766,7 +775,7 @@ export default {
       li {
         color: white;
         line-height: 30px;
-        font-size:2vh;
+        font-size: 2vh;
         text-align: center;
       }
     }
@@ -989,9 +998,12 @@ export default {
     }
   }
   .qr_code {
+    // background: red;
+    // margin: 0 auto;
     padding: 10px;
-    display: flex;
-    justify-content: space-around;
+    // display: flex;
+    // justify-content: space-around;
+    text-align: center;
     img {
       padding-top: 10px;
       width: 65%;

@@ -31,7 +31,7 @@
           <img
             src="../assets/appdownload/phone.png"
             alt=""
-            style="width: 300px; cursor: pointer;margin-top:8px;"
+            style="width: 300px; cursor: pointer; margin-top: 8px"
             draggable="false"
           />
         </div>
@@ -43,6 +43,26 @@
         <div class="right-div1">简洁易用操作方便</div>
         <div class="right-div2">取款更方便快捷</div>
         <div class="right-div3">公平公正博彩平台, 为您呈现奢华游戏体验。</div>
+
+         <!-- qrcode -->
+        <div
+          style="
+            position: absolute;
+            right: -200px;
+            height: 250px;
+            width: 200px;
+            background: ;
+            top: 20px;
+          "
+        >
+          <img
+            src="../assets/live/qr.png"
+            alt=""
+            style="height: 100%; width: 100%;cursor:pointer"
+            draggable="false"
+          />
+        </div>
+        <!-- qrend -->
 
         <div class="online-service-img">
           <img

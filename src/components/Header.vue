@@ -7,9 +7,13 @@
         <div class="upper-header">
           <span>设为主页</span>
 
+          <!--test text  -->
           <span class="line"></span>
-          <span>代理加盟</span>
+          <span @click="GoAdmin()">代理登录</span>
+
+          <!--  -->
           <span class="line"></span>
+          <!-- <a @click="Book()" id="url">收藏我们</a> -->
           <span>收藏我们</span>
         </div>
         <!-- input -->
@@ -50,7 +54,14 @@
           <button class="login-btn register" @click="openRegister()">
             注册
           </button>
-          <button class="login-btn test" @click="gotoTestGame()">试玩</button>
+          <!-- <button class="login-btn test" @click="gotoTestGame()">试玩</button> -->
+          <a href="#" class="test_btn" @click="gotoTestGame()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            试玩
+          </a>
         </div>
       </div>
 
@@ -217,7 +228,10 @@ export default {
       }
       // 将当前数据派发出去
       // this.$emit('update:value', codeList.map(item => item.code).join(''))
-      this.code = this.codeList.map((item) => item.code).join("");
+      this.code = this.codeList
+        .map((item) => item.code)
+        .join("")
+        .toLowerCase();
     },
     getStyle(data) {
       return `color: ${data.color}; font-size: ${data.fontSize}; padding: ${data.padding}; transform: ${data.transform}`;
@@ -233,7 +247,56 @@ export default {
     gotoTestGame() {
       window.open(`http://wl2021.com/?token=`);
     },
+    // Book() {
+    //   var triggerBookmark = document.getElementById("a#url");
+    //   if (window.sidebar && window.sidebar.addPanel) {
+    //     // Firefox <23
 
+    //     window.sidebar.addPanel(document.title, window.location.href, "");
+    //   } else if (window.external && "AddFavorite" in window.external) {
+    //     // Internet Explorer
+
+    //     window.external.AddFavorite(location.href, document.title);
+    //   } else if (
+    //     (window.opera && window.print) ||
+    //     (window.sidebar && !(window.sidebar instanceof Node))
+    //   ) {
+    //     // Opera <15 and Firefox >23
+    //     /**
+    //      * For Firefox <23 and Opera <15, no need for JS to add to bookmarks
+    //      * The only thing needed is a `title` and a `rel="sidebar"`
+    //      * To ensure that the bookmarked URL doesn't have a complementary `#` from our trigger's href
+    //      * we force the current URL
+    //      */
+    //     triggerBookmark
+    //       .attr("rel", "sidebar")
+    //       .attr("title", document.title)
+    //       .attr("href", window.location.href);
+    //     return true;
+    //   } else {
+    //     // For the other browsers (mainly WebKit) we use a simple alert to inform users that they can add to bookmarks with ctrl+D/cmd+D
+
+    //     // alert(
+    //     //   "You can add this page to your bookmarks by pressing " +
+    //     //     (navigator.userAgent.toLowerCase().indexOf("mac") != -1
+    //     //       ? "Command/Cmd"
+    //     //       : "CTRL") +
+    //     //     " + D on your keyboard."
+    //     // );
+    //     this.$message.warning(
+    //       "You can add this page to your bookmarks by pressing " +
+    //         (navigator.userAgent.toLowerCase().indexOf("mac") != -1
+    //           ? "Command/Cmd"
+    //           : "CTRL") +
+    //         " + D on your keyboard."
+    //     );
+    //   }
+    //   // If you have something in the `href` of your trigger
+    //   return false;
+    // },
+    GoAdmin() {
+      window.open("http://www.hn2201.com");
+    },
     Register() {
       // console.log("enter register");
       var en = this.$Global.en;
@@ -311,7 +374,7 @@ export default {
       if (this.login.password == "") return this.$message.warning("请输入密码");
       if (this.login.code == "") return this.$message.warning("请输入验证码");
 
-      if (this.code != this.login.code)
+      if (this.code != this.login.code.toLowerCase())
         return this.$message.warning("验证码不正确！");
 
       let logindata = {
@@ -326,9 +389,9 @@ export default {
         .then((res) => {
           //console.log("response of login --------------", res);
           var body = res.data;
-          //console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", body);
+         // console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", body);
           var msg = JSON.parse(AES.decrypt(body, en));
-          // console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", msg);
+           console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", msg);
           if (msg.JsonData.code == 200) {
             this.$store.state.login = true;
             //here i am store user input name and pass to state
@@ -375,9 +438,11 @@ export default {
     display: flex;
     position: relative;
     .logo {
-      height: 180px;
-      width: 200px;
+      height: 150px;
+      width: 150px;
       animation: move-byline 10s ease-out infinite;
+      // padding-top: 10px;
+      margin-top: 10px;
     }
 
     @keyframes move-byline {
@@ -407,15 +472,105 @@ export default {
     align-items: center;
     // background: red;
     margin: 0 auto;
-    width: 1000px;
+    width: 1035px;
     height: 100px;
+    a {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin: 0 10px;
+      color: #0e3742;
+      animation: animate 2s linear infinite;
+    }
     span {
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
       font-weight: bold;
       font-size: 20px;
       letter-spacing: 2px;
       //   padding: 10px 0px;
       margin: 0 10px;
+      color: #0e3742;
+      animation: animate 2s linear infinite;
+      // -webkit-box-reflect: below 1px linear-gradient(transparent, #0008);
+      // -webkit-animation-name: blinker;
+      // animation-name: blinker;
+      // -webkit-animation-iteration-count: infinite;
+      // animation-iteration-count: infinite;
+      // -webkit-animation-duration: 2s;
+      // animation-duration: 2s;
+      // @keyframes blinker {
+      //   0% {
+      //     color: #fff;
+      //     text-shadow: #fff 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+      //   50% {
+      //     color: #009dec;
+      //     text-shadow: #009dec 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+
+      //   100% {
+      //     color: #fff;
+      //     text-shadow: #fff 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+      // }
+      // @-webkit-keyframes blinker {
+      //   0% {
+      //     color: #fff;
+      //     text-shadow: #fff 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+      //   50% {
+      //     color: #009dec;
+      //     text-shadow: #009dec 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+
+      //   100% {
+      //     color: #fff;
+      //     text-shadow: #fff 0px 0px 20px;
+      //     font-size: 100%;
+      //   }
+      // }
+
+      //
+      @keyframes animate {
+        0%,
+        18%,
+        20%,
+        50.1%,
+        60%,
+        65.1%,
+        80%,
+        90.1%,
+        92% {
+          color: #0e3742;
+          text-shadow: none;
+        }
+        18.1%,
+        20.1%,
+        30%,
+        50%,
+        60.1%,
+        65%,
+        80.1%,
+        90%,
+        92.1%,
+        100% {
+          color: #fff;
+          text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+            0 0 80px #03bcf4, 0 0 160px #03bcf4;
+        }
+      }
+      //
     }
+    //
+    //
     .line {
       width: 2px;
       background: #fff;
@@ -431,6 +586,8 @@ export default {
     height: 60px;
     justify-content: flex-end;
     align-items: center;
+    margin-left: 35px;
+    // margin-top: -20px;
 
     .input {
       border: 2px solid #009dec;
@@ -453,12 +610,12 @@ export default {
 
     :-ms-input-placeholder {
       /* Internet Explorer 10-11 */
-        color: #71b2d9;
+      color: #71b2d9;
     }
 
     ::-ms-input-placeholder {
       /* Microsoft Edge */
-        color: #71b2d9;
+      color: #71b2d9;
     }
 
     .ValidCode {
@@ -503,10 +660,137 @@ export default {
       background: linear-gradient(to bottom, #ee7735, #e2ef48, #ee7735);
       color: #f23f71;
     }
-    .test {
-      background: #ed6942;
-      color: #fff;
+    // .test {
+    //   background: #ed6942;
+    //   color: #fff;
+    // }
+    // .test:hover {
+    //   background: #ed6942;
+    //   color: #fff;
+    //   border-radius: 5px;
+    //   box-shadow: 0 0 5px #ed6942, 0 0 25px #ed6942, 0 0 50px #ed6942,
+    //     0 0 100px #ed6942;
+    // }
+    .test_btn {
+      height: 35px;
+      width: 80px;
+      // background: red;
+      position: relative;
+      display: inline-block;
+      padding: 10px 3px;
+      margin: 0px 10px;
+      color: #03e9f4;
+      // font-size: 24px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.5s;
+      letter-spacing: 2px;
+      -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+      text-align: center;
+      align-items: center;
     }
+    .test_btn:nth-child(1) {
+      filter: hue-rotate(290deg);
+    }
+
+    .test_btn:nth-child(3) {
+      filter: hue-rotate(110deg);
+    }
+    .test_btn:hover {
+      background: #03e9f4;
+      color: black;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+        0 0 200px #03e9f4;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .test_btn span {
+      position: absolute;
+      display: block;
+    }
+
+    .test_btn span:nth-child(1) {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #03e9f4);
+      animation: animate1 1s linear infinite;
+    }
+
+    @keyframes animate1 {
+      0% {
+        left: -100%;
+      }
+      50%,
+      100% {
+        left: 100%;
+      }
+    }
+
+    .test_btn span:nth-child(2) {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #03e9f4);
+      animation: animate2 1s linear infinite;
+      animation-delay: 0.25s;
+    }
+
+    @keyframes animate2 {
+      0% {
+        top: -100%;
+      }
+      50%,
+      100% {
+        top: 100%;
+      }
+    }
+
+    .test_btn span:nth-child(3) {
+      bottom: 0;
+      right: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #03e9f4);
+      animation: animate3 1s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes animate3 {
+      0% {
+        right: -100%;
+      }
+      50%,
+      100% {
+        right: 100%;
+      }
+    }
+
+    .test_btn span:nth-child(4) {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #03e9f4);
+      animation: animate4 1s linear infinite;
+      animation-delay: 0.75s;
+    }
+
+    @keyframes animate4 {
+      0% {
+        bottom: -100%;
+      }
+      50%,
+      100% {
+        bottom: 100%;
+      }
+    }
+
+    //end
   }
 }
 
