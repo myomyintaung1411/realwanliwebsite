@@ -120,6 +120,10 @@ export default {
       if (!/\d/.test(this.regForm.pass) || !/[a-zA-Z]/.test(this.regForm.pass))
         return this.$mobilemessage.warning("密码必须包含数字和英文字母");
       var agentName = this.$Global.optioner.AgentName;
+
+      if (agentName == "") {
+        return this.$message.warning("您打开的网址链接没有携带ID，无法注册");
+      }
       //console.log("agentname",agentName);
       let data = {
         name: this.regForm.name,

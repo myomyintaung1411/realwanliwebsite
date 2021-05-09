@@ -17,8 +17,8 @@
           class="img"
         />
       </div>
-      <div class="text">sdfsdfsdfsdfdsfsdfsdfsdfsdfsdfsdfsdfsdfdsfsdafsdf</div>
-      <div class="text">HelloTestingsdfsdfsdfdsfsdfdssdfdsfdsafdsf</div>
+      <!-- <div class="text">sdfsdfsdfsdfdsfsdfsdfsdfsdfsdfsdfsdfsdfdsfsdafsdf</div>
+      <div class="text">HelloTestingsdfsdfsdfdsfsdfdssdfdsfdsafdsf</div> -->
     </div>
     <!-- <div class="text">tttttttttttttttttttttttttttttt</div>
     <div class="text two">hello</div> -->
@@ -55,7 +55,7 @@ export default {
   .image_div {
     height: auto;
     width: auto;
-    background: red;
+    // background: red;
   }
   // .img {
   //   width: auto;

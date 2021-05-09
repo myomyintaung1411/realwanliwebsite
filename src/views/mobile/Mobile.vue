@@ -275,7 +275,7 @@
         赶紧扫描下载吧
       </p>
       <div class="qr_code">
-        <img src="../../assets/live/qr.png" alt="" />
+        <img src="../../../public/wanliqr.png" alt="" />
       </div>
     </div>
     <!--  -->
@@ -412,8 +412,8 @@ export default {
     };
   },
   created() {
-    // let s = window.location.href;
-    var s = "http://21020.localhost:8080";
+    let s = window.location.href;
+     // var s = "http://21019.hn232.com";
     let h = s.split(".")[0];
     let a = h.split("//")[1];
     this.getAgentInfo(a);
@@ -458,7 +458,7 @@ export default {
         .then((res) => {
           var body = res.data;
           var msg = JSON.parse(AES.decrypt(body, en));
-          
+
           if (msg.JsonData.code == 200) {
             this.$Global.optioner.AgentId = msg.JsonData.Id;
             this.$Global.optioner.AgentName = msg.JsonData.name;
@@ -501,7 +501,18 @@ export default {
       this.$router.push("/m/register");
     },
     goPlayGame() {
-      window.open(`http://wl2021.com/?token=`);
+      if (this.$store.state.login == false) {
+        return this.$mobilemessage.warning("请先登录");
+      } else {
+        var gameEn = this.$Global.gameEn;
+        let data = {
+          name: this.$store.state.myAccount,
+          password: this.$md5(this.$store.state.myPassword),
+        };
+
+        var endata = AES.encrypt(JSON.stringify(data), gameEn);
+        window.open(`http://wl2021.com/?token=${endata}`);
+      }
     },
     //submit payment
     submitPayment() {
@@ -668,7 +679,12 @@ export default {
         let uid = this.$Global.myLoginInfo.loginId;
         let avatar = "";
         let name = this.$store.state.myAccount;
-        // console.log(name,"name");
+        // let loginId = this.$Global.myLoginInfo.loginId;
+        // let loginName = this.$Global.myLoginInfo.loginName;
+        // // console.log(name,"name");
+        // window.open(
+        //   `http://wanlikefu.hn885.com/index/index/home?visiter_id=${loginId}&visiter_name=${loginName}&avatar=&business_id=1&groupid=0&special=1`
+        // );
         window.open(
           `http://live.sunnychat.me/index/index/kefu?u=${u}&uid=${uid}&name=${name}&avatar=${avatar}`
         );

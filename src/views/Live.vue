@@ -162,7 +162,7 @@
         <!-- qrcode -->
         <div class="qr_code">
           <img
-            src="../assets/live/qr.png"
+            src="../../public/wanliqr.png"
             alt=""
             style="height: 100%; width: 100%"
             draggable="false"
@@ -230,7 +230,18 @@ export default {
       AES.Service();
     },
     Gogame() {
-      window.open(`http://wl2021.com/`);
+      if (this.$store.state.login == false) {
+        return this.$message.warning("请先登录");
+      } else {
+        var gameEn = this.$Global.gameEn;
+        let data = {
+          name: this.$store.state.myAccount,
+          password: this.$md5(this.$store.state.myPassword),
+        };
+
+        var endata = AES.encrypt(JSON.stringify(data), gameEn);
+        window.open(`http://wl2021.com/?token=${endata}`);
+      }
     },
   },
   created() {

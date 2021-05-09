@@ -39,10 +39,10 @@ export default {
     return decrypted.toString(CryptoJS.enc.Utf8);
   },
 
-  gameEncrypt(data,G_KP) {
+  gameEncrypt(data, G_KP) {
     var key = CryptoJS.enc.Utf8.parse(G_KP.key);
     var iv = CryptoJS.enc.Utf8.parse(G_KP.iv);
-     
+
     // if (keyStr) {
     //   key = CryptoJS.enc.Utf8.parse(keyStr);
     //   iv = CryptoJS.enc.Utf8.parse(ivStr);
@@ -56,7 +56,7 @@ export default {
     });
     // console.log("-=-=-=-", encrypted.ciphertext)
     return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
-     
+
   },
 
 
@@ -161,6 +161,9 @@ export default {
     if (store.state.login == false) {
       return Message.warning("请先登录");
     } else {
+      // let loginId = global.myLoginInfo.loginId;
+      // let loginName = global.myLoginInfo.loginName;
+      // window.open(`http://wanlikefu.hn885.com/index/index/home?visiter_id=${loginId}&visiter_name=${loginName}&avatar=&business_id=1&groupid=0&special=1`)
       let u = global.myLoginInfo.customerId;
       let uid = global.myLoginInfo.loginId;
       let avatar = "";

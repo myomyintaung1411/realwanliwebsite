@@ -119,9 +119,9 @@
         <!-- qrcode -->
         <div class="qr_code">
           <img
-            src="../assets/live/qr.png"
+            src="../../public/wanliqr.png"
             alt=""
-            style="height: 100%; width: 100%"
+            style="height: auto; width: 200px"
             draggable="false"
           />
         </div>

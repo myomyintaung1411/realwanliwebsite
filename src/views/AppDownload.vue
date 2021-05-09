@@ -44,21 +44,21 @@
         <div class="right-div2">取款更方便快捷</div>
         <div class="right-div3">公平公正博彩平台, 为您呈现奢华游戏体验。</div>
 
-         <!-- qrcode -->
+        <!-- qrcode -->
         <div
           style="
             position: absolute;
             right: -200px;
-            height: 250px;
+            height: auto;
             width: 200px;
             background: ;
             top: 20px;
           "
         >
           <img
-            src="../assets/live/qr.png"
+            src="../../public/wanliqr.png"
             alt=""
-            style="height: 100%; width: 100%;cursor:pointer"
+            style="height: 100%; width: 100%; cursor: pointer"
             draggable="false"
           />
         </div>

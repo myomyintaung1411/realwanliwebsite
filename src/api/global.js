@@ -2,7 +2,8 @@
 
 // eslint-disable-next-line no-unused-vars
 
-var BASE_URL = "http://114.29.253.162:3198/";
+// var BASE_URL = "http://114.29.253.162:3198/";
+var BASE_URL = "https://www.hn8801.com/";
 export default
   {
     optioner: {
@@ -15,10 +16,10 @@ export default
       loginName: '',
       loginBalance: '',
       loginEnable: '',
-      customerId:'',
+      customerId: '',
     },
 
-    registerurl: BASE_URL + 'regist',
+    registerurl: BASE_URL + '/regist',
     loginurl: BASE_URL + 'login',
     agentUrl: BASE_URL + 'getAgentInfo ',
     scrollData: BASE_URL + 'getBulletin',

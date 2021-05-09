@@ -324,7 +324,9 @@ export default {
         return this.$message.warning("密码必须包含数字和英文字母");
 
       var agentName = this.$Global.optioner.Agentname;
-      //console.log(agentName, "name of agent is777777777");
+      if (agentName == "") {
+        return this.$message.warning("您打开的网址链接没有携带ID，无法注册");
+      }
       let data = {
         name: this.register.name,
         pw: this.$md5(this.register.pass),
@@ -341,7 +343,7 @@ export default {
         .then((res) => {
           var body = res.data;
           var msg = JSON.parse(AES.decrypt(body, en));
-          //console.log(msg, "response msg of register is");
+          console.log(msg, "response msg of register is");
           if (msg.JsonData.result == "102") {
             return this.$message.warning("无此代理");
           }
@@ -389,9 +391,9 @@ export default {
         .then((res) => {
           //console.log("response of login --------------", res);
           var body = res.data;
-         // console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", body);
+          // console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", body);
           var msg = JSON.parse(AES.decrypt(body, en));
-           console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", msg);
+          // console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaa", msg);
           if (msg.JsonData.code == 200) {
             this.$store.state.login = true;
             //here i am store user input name and pass to state

@@ -164,7 +164,7 @@ export default {
       };
       // var endata = "sZHOqLO6s7O5Lyw+VysKzDHev00mwbp6yj6JabuehTq3K3ixgvz5IHSY14QKfrZumY2cWSuiQrppMSflR4DpNg=="
       var endata = AES.payEncrypt(JSON.stringify(data), paymentEn);
-      //  console.log(endata, "endata is of payment is ***************************");
+        console.log(endata, "endata is of payment is ***************************");
 
       this.axios
         .post(`${this.$Global.PaymentUrl}?d=${endata}`)
@@ -225,6 +225,7 @@ export default {
         amount: this.withdraw.withdrawmoneyamount, // $amount,
       };
       var endata = AES.payEncrypt(JSON.stringify(data), withdrawEn);
+     // console.log(endata);
       this.axios
         .post(`${this.$Global.Withdrawurl}?d=${endata}`)
         .then((res) => {
